@@ -23,6 +23,9 @@
     },
     "extra": {
         "laravel": {
+            "providers": [
+                "Jorzel\\PagSeguro\\PagSeguroServiceProvider"
+            ],
             "aliases": {
                 "PagSeguro": "Jorzel\\PagSeguro\\Facades\\PagSeguro"
             }
