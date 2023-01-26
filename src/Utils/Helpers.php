@@ -38,7 +38,7 @@ trait Helpers
             'amount.value' => 'required|integer',
             'amount.currency' => 'required|string',
             'payment_method.type' => 'required|string',
-            'payment_method.installments' => 'required|string',
+            'payment_method.installments' => 'required|integer',
             'payment_method.capture' => 'required|boolean',
             'payment_method.card.number' => 'required|string',
             'payment_method.card.store' => 'required|boolean',
@@ -67,9 +67,9 @@ trait Helpers
             'amount.value' => 'required|integer',
             'amount.currency' => 'required|string',
             'payment_method.type' => 'required|string',
-            'payment_method.installments' => 'required|string',
+            'payment_method.installments' => 'required|integer',
             'payment_method.capture' => 'required|boolean',
-            'payment_method.card.encrypted' => 'required|string',
+            'payment_method.card.id' => 'required|string',
         ]);
 
         if ($validator->fails()) {

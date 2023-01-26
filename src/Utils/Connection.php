@@ -33,7 +33,9 @@ class Connection
     {
         try {
             $response = Http::withHeaders([
-                'Accept' => 'application/json'
+                'Accept' => '*/*',
+                'Content-Type' => 'application/json'
+
             ])
             ->withToken($this->accessToken)
             ->get($this->baseUrl . $url, $params);
@@ -62,7 +64,9 @@ class Connection
     {
         try {
             $response = Http::withHeaders([
-                'Accept' => 'application/json'
+                'Accept' => '*/*',
+                'Content-Type' => 'application/json'
+
             ])
             ->withToken($this->accessToken)
             ->post($this->baseUrl . $url, $params);
