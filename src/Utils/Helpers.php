@@ -92,9 +92,8 @@ trait Helpers
             'amount.currency' => 'required|string',
             'payment_method.type' => 'required|string',
             'payment_method.boleto.due_date' => 'required|string',
-            'payment_method.boleto.instruction_lines.line_1' => 'nullalble|string',
-            'payment_method.boleto.instruction_lines.line_2' => 'nullalble|string',
-            'payment_method.boleto.holder' => 'required|string',
+            'payment_method.boleto.instruction_lines.line_1' => 'nullable|string',
+            'payment_method.boleto.instruction_lines.line_2' => 'nullable|string',
             'payment_method.boleto.holder.name' => 'required|string',
             'payment_method.boleto.holder.tax_id' => 'required|string',
             'payment_method.boleto.holder.email' => 'required|string',
@@ -106,6 +105,33 @@ trait Helpers
             'payment_method.boleto.holder.address.region_code' => 'required|string',
             'payment_method.boleto.holder.address.country' => 'required|string',
             'payment_method.boleto.holder.address.postal_code' => 'required|string',
+            'notification_urls' => 'nullable|array',
+        ]);
+
+        if ($validator->fails()) {
+            throw new \Exception($validator->errors()->first());
+        }
+    }
+
+           /*
+     * Validate data for create a qrcode order.
+     *
+     * @param array $data
+     * @return void
+     */
+    public function validateQrCodeOrder($data)
+    {
+        $validator = Validator::make($data, [
+            'reference_id' => 'required|string',
+            'customer.name' => 'required|string',
+            'customer.email' => 'required|string',
+            'customer.tax_id' => 'required|string',
+            'items.name' => 'required|string',
+            'items.quantity' => 'required|integer',
+            'items.unit_amount' => 'required|integer',
+            'qr_codes.amount.value' => 'required|integer',
+            'qr_codes.expiration_date' => 'required|string',
+            'notification_urls' => 'nullable|array',
         ]);
 
         if ($validator->fails()) {
