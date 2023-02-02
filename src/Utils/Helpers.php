@@ -126,11 +126,11 @@ trait Helpers
             'customer.name' => 'required|string',
             'customer.email' => 'required|string',
             'customer.tax_id' => 'required|string',
-            'items.name' => 'required|string',
-            'items.quantity' => 'required|integer',
-            'items.unit_amount' => 'required|integer',
-            'qr_codes.amount.value' => 'required|integer',
-            'qr_codes.expiration_date' => 'required|string',
+            'items.0.name' => 'required|string',
+            'items.0.quantity' => 'required|integer',
+            'items.0.unit_amount' => 'required|integer',
+            'qr_codes.0.amount.value' => 'required|integer',
+            'qr_codes.0.expiration_date' => 'nullable|date_format:Y-m-d\\TH:i:sO',
             'notification_urls' => 'nullable|array',
         ]);
 
