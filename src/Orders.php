@@ -62,4 +62,64 @@ class Orders
             ];
         }
     }
+
+        /*
+     * Create a order with QrCode payment.
+     *
+     * @param array $data
+     * @return array
+     */
+    public function boleto($data)
+    {
+        try {
+            $this->validateBoletoOrder($data);
+
+            return $this->http->post('/orders', $data);
+        } catch (\Exception $e) {
+            return [
+                'code' => $e->getCode(),
+                'response' => $e->getMessage()
+            ];
+        }
+    }
+
+        /*
+     * Create a order with QrCode payment.
+     *
+     * @param array $data
+     * @return array
+     */
+    public function creditCard($data)
+    {
+        try {
+            $this->validateCreditCardOrder($data);
+
+            return $this->http->post('/orders', $data);
+        } catch (\Exception $e) {
+            return [
+                'code' => $e->getCode(),
+                'response' => $e->getMessage()
+            ];
+        }
+    }
+
+        /*
+     * Create a order with QrCode payment.
+     *
+     * @param array $data
+     * @return array
+     */
+    public function creditCardToken($data)
+    {
+        try {
+            $this->validateCreditCardTokenOrder($data);
+
+            return $this->http->post('/orders', $data);
+        } catch (\Exception $e) {
+            return [
+                'code' => $e->getCode(),
+                'response' => $e->getMessage()
+            ];
+        }
+    }
 }
